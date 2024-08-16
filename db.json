@@ -1,0 +1,74 @@
+{
+  "cars": [
+    {
+      "id": "1",
+      "model": "Suzuki Alto",
+      "description": "Compact and efficient",
+      "price": 8000,
+      "image": "./assets/car1.png"
+    },
+    {
+      "id": "2",
+      "model": "Suzuki Cultus",
+      "description": "Perfect for city driving",
+      "price": 9000,
+      "image": "./assets/car2.png"
+    },
+    {
+      "id": "3",
+      "model": "Suzuki Wagon R",
+      "description": "Spacious and economical",
+      "price": 10000,
+      "image": "./assets/car3.png"
+    },
+    {
+      "id": "4",
+      "model": "Toyota Corolla",
+      "description": "Reliable and durable",
+      "price": 15000,
+      "image": "./assets/car4.png"
+    },
+    {
+      "id": "5",
+      "model": "Toyota Yaris",
+      "description": "Stylish and comfortable",
+      "price": 13000,
+      "image": "./assets/car5.png"
+    },
+    {
+      "id": "6",
+      "model": "Toyota Hilux",
+      "description": "Rugged and powerful",
+      "price": 20000,
+      "image": "./assets/car6.png"
+    },
+    {
+      "id": "7",
+      "model": "Honda Civic",
+      "description": "Sporty and sleek",
+      "price": 18000,
+      "image": "./assets/car7.png"
+    },
+    {
+      "id": "8",
+      "model": "Honda City",
+      "description": "Efficient and practical",
+      "price": 14000,
+      "image": "./assets/car8.png"
+    }
+  ],
+  "reservations": [
+    {
+      "id": "bcea",
+      "name": "iram",
+      "email": "iramkhizar118@gmail.com",
+      "contactNumber": "03406750787",
+      "pickUpDate": "2025-01-01",
+      "dropOffDate": "2025-01-01",
+      "location": "LAHORE",
+      "address": "house no 221",
+      "contact": "03018443329",
+      "carType": "Suzuki Cultus"
+    }
+  ]
+}
