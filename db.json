@@ -62,13 +62,11 @@
       "id": "bcea",
       "name": "iram",
       "email": "iramkhizar118@gmail.com",
-      "contactNumber": "03406750787",
+      "contactNumber": "03018443329",
+      "carType": "Suzuki cultas",
       "pickUpDate": "2025-01-01",
       "dropOffDate": "2025-01-01",
-      "location": "LAHORE",
-      "address": "house no 221",
-      "contact": "03018443329",
-      "carType": "Suzuki Cultus"
+      "location": "LAHORE"
     }
   ]
 }

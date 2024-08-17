@@ -11,6 +11,8 @@ const BookRideForm = ({ onSearch, onClose }) => {
     carType: "",
   });
 
+  const [errors, setErrors] = useState({});
+
   const carOptions = [
     "Suzuki Alto",
     "Suzuki Cultus",
@@ -22,6 +24,19 @@ const BookRideForm = ({ onSearch, onClose }) => {
     "Honda City",
   ];
 
+  const validate = () => {
+    const newErrors = {};
+    if (!formData.pickUpDate) newErrors.pickUpDate = "Pick-up date is required";
+    if (!formData.dropOffDate)
+      newErrors.dropOffDate = "Drop-off date is required";
+    if (!formData.location) newErrors.location = "Location is required";
+    if (!formData.address) newErrors.address = "Address is required";
+    if (!formData.name) newErrors.name = "Name is required";
+    if (!formData.contact) newErrors.contact = "Contact is required";
+    if (!formData.carType) newErrors.carType = "Car type is required";
+    return newErrors;
+  };
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -32,7 +47,13 @@ const BookRideForm = ({ onSearch, onClose }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSearch(formData); // Trigger the onSearch callback with the form data
+    const validationErrors = validate();
+    if (Object.keys(validationErrors).length === 0) {
+      onSearch(formData);
+      setErrors({});
+    } else {
+      setErrors(validationErrors);
+    }
   };
 
   return (
@@ -54,9 +75,13 @@ const BookRideForm = ({ onSearch, onClose }) => {
             name="pickUpDate"
             value={formData.pickUpDate}
             onChange={handleChange}
-            className="border border-gray-300 p-2 rounded"
-            required
+            className={`border border-gray-300 p-2 rounded ${
+              errors.pickUpDate ? "border-red-500" : ""
+            }`}
           />
+          {errors.pickUpDate && (
+            <p className="text-red-500">{errors.pickUpDate}</p>
+          )}
         </div>
         <div className="flex flex-col">
           <label
@@ -71,9 +96,13 @@ const BookRideForm = ({ onSearch, onClose }) => {
             name="dropOffDate"
             value={formData.dropOffDate}
             onChange={handleChange}
-            className="border border-gray-300 p-2 rounded"
-            required
+            className={`border border-gray-300 p-2 rounded ${
+              errors.dropOffDate ? "border-red-500" : ""
+            }`}
           />
+          {errors.dropOffDate && (
+            <p className="text-red-500">{errors.dropOffDate}</p>
+          )}
         </div>
         <div className="flex flex-col">
           <label
@@ -88,9 +117,11 @@ const BookRideForm = ({ onSearch, onClose }) => {
             name="location"
             value={formData.location}
             onChange={handleChange}
-            className="border border-gray-300 p-2 rounded"
-            required
+            className={`border border-gray-300 p-2 rounded ${
+              errors.location ? "border-red-500" : ""
+            }`}
           />
+          {errors.location && <p className="text-red-500">{errors.location}</p>}
         </div>
         <div className="flex flex-col">
           <label htmlFor="address" className="mb-1 font-semibold text-gray-700">
@@ -102,9 +133,11 @@ const BookRideForm = ({ onSearch, onClose }) => {
             name="address"
             value={formData.address}
             onChange={handleChange}
-            className="border border-gray-300 p-2 rounded"
-            required
+            className={`border border-gray-300 p-2 rounded ${
+              errors.address ? "border-red-500" : ""
+            }`}
           />
+          {errors.address && <p className="text-red-500">{errors.address}</p>}
         </div>
         <div className="flex flex-col">
           <label htmlFor="name" className="mb-1 font-semibold text-gray-700">
@@ -116,9 +149,11 @@ const BookRideForm = ({ onSearch, onClose }) => {
             name="name"
             value={formData.name}
             onChange={handleChange}
-            className="border border-gray-300 p-2 rounded"
-            required
+            className={`border border-gray-300 p-2 rounded ${
+              errors.name ? "border-red-500" : ""
+            }`}
           />
+          {errors.name && <p className="text-red-500">{errors.name}</p>}
         </div>
         <div className="flex flex-col">
           <label htmlFor="contact" className="mb-1 font-semibold text-gray-700">
@@ -130,9 +165,11 @@ const BookRideForm = ({ onSearch, onClose }) => {
             name="contact"
             value={formData.contact}
             onChange={handleChange}
-            className="border border-gray-300 p-2 rounded"
-            required
+            className={`border border-gray-300 p-2 rounded ${
+              errors.contact ? "border-red-500" : ""
+            }`}
           />
+          {errors.contact && <p className="text-red-500">{errors.contact}</p>}
         </div>
         <div className="flex flex-col">
           <label htmlFor="carType" className="mb-1 font-semibold text-gray-700">
@@ -143,8 +180,9 @@ const BookRideForm = ({ onSearch, onClose }) => {
             name="carType"
             value={formData.carType}
             onChange={handleChange}
-            className="border border-gray-300 p-2 rounded"
-            required
+            className={`border border-gray-300 p-2 rounded ${
+              errors.carType ? "border-red-500" : ""
+            }`}
           >
             <option value="" disabled>
               Select car type
@@ -155,6 +193,7 @@ const BookRideForm = ({ onSearch, onClose }) => {
               </option>
             ))}
           </select>
+          {errors.carType && <p className="text-red-500">{errors.carType}</p>}
         </div>
         <div className="flex justify-between">
           <button
